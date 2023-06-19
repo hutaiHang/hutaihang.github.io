@@ -338,7 +338,7 @@ td {
   padding: 0;
 }
 .main {
-  max-width: 800px;
+  max-width: 100%;
   min-height: 100vh;
   margin: 0 auto;
   background: #fff;
@@ -348,7 +348,7 @@ td {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  padding: 0 24px;
+  padding: 10px;
 }
 .site-header {
   padding: 48px 0;
@@ -510,7 +510,8 @@ td {
   flex: 1;
 }
 .post-detail .post {
-  padding: 24px 32px;
+  /* padding: 24px 32px; */
+  padding: 0px;
 }
 .post-detail .post .post-feature-image {
   width: 100%;
@@ -565,7 +566,7 @@ td {
   box-shadow: 0 0 30px #eee;
   max-width: 100%;
   border-radius: 2px;
-  margin: 24px auto;
+  margin: 5px auto;
 }
 .post-detail .post .post-content p {
   line-height: 1.62;
