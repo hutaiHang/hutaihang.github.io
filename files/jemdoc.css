@@ -29,7 +29,7 @@ body {
   padding-right: 50px;
   padding-top: 10px;
   padding-bottom: 30px;
-  max-width: 900px;
+  max-width: 800px;
 }
 
 #layout-menu {
@@ -375,7 +375,7 @@ table.imgtable, table.imgtable td {
 
 .scroll-box-container {
  width: 100%; 
-  max-width: 900px;
+  max-width: 800px;
   height: 115px;
   overflow: hidden;
 }
