@@ -374,7 +374,8 @@ table.imgtable, table.imgtable td {
 }
 
 .scroll-box-container {
-  width: 928px; 
+ width: 100%; 
+  max-width: 900px;
   height: 115px;
   overflow: hidden;
 }
