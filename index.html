@@ -1,210 +1,740 @@
-<meta name="description" content="Taihang Hu" charset="UTF-8">
-<link rel="stylesheet" href="./files/jemdoc.css" type="text/css">
-<link rel="shortcut icon" href="./files/preview.jpg">
-<title>Taihang Hu</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Taihang Hu - MS student at Nankai University">
+    <title>Taihang Hu</title>
+    <link rel="shortcut icon" href="./files/profile.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
+        :root {
+            --text: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-muted: #6b7280;
+            --link: #2563eb;
+            --link-hover: #1d4ed8;
+            --border: #e5e7eb;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --badge-preprint: #6b7280;
+            --badge-techreport: #1e62e9;
+            --badge-iclr: #3b82f6;
+            --badge-neurips: #8b5cf6;
+            --badge-iccv: #f59e0b;
+            --badge-cvpr: #ef4444;
+            --badge-icml: #10b981;
+            --badge-cvmj: #14b8a6;
+        }
 
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Crimson Text', Georgia, serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.55;
+            font-size: 17px;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* Header / Profile */
+        .profile-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 32px;
+            margin-bottom: 36px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .profile-text {
+            flex: 1;
+        }
+
+        .profile-text h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+
+        .profile-role {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin: 0 0 4px 0;
+        }
+
+        .profile-affiliation {
+            color: var(--text-muted);
+            margin: 0 0 16px 0;
+        }
+
+        .profile-affiliation a {
+            color: var(--text-muted);
+        }
+
+        .profile-affiliation a:hover {
+            color: var(--link);
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .social-links a {
+            color: var(--link);
+        }
+
+        .social-links .sep {
+            color: var(--text-muted);
+        }
+
+        .profile-photo {
+            flex-shrink: 0;
+        }
+
+        .profile-photo img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--border);
+            background: #fff;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 36px;
+        }
+
+        h2 {
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin: 0 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 20px 0 10px 0;
+            color: var(--text);
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            color: var(--text-secondary);
+        }
+
+        /* Research Interests */
+        .research-interests {
+            display: grid;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .interest {
+            color: var(--text-secondary);
+        }
+
+        .interest strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* News */
+        .news-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .news-list li {
+            display: flex;
+            gap: 14px;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .news-list li:last-child {
+            border-bottom: none;
+        }
+
+        .news-date {
+            flex-shrink: 0;
+            font-weight: 600;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            min-width: 70px;
+            padding-top: 1px;
+        }
+
+        .news-content {
+            color: var(--text-secondary);
+        }
+
+        .news-content a {
+            color: var(--link);
+        }
+
+        .news-list li.news-hidden {
+            display: none;
+        }
+
+        .news-list.expanded li.news-hidden {
+            display: flex;
+        }
+
+        .news-toggle {
+            margin-top: 10px;
+            padding: 6px 14px;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            color: var(--text-secondary);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .news-toggle:hover {
+            border-color: var(--link);
+            color: var(--link);
+        }
+
+        .pub-note {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .pub-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .pub-card {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 16px;
+            padding: 14px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        .pub-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            transform: translateY(-1px);
+        }
+
+        .pub-thumb {
+            width: 100%;
+            height: 150px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f3f4f6;
+            border: 1px solid var(--border);
+        }
+
+        .pub-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .pub-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .pub-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            line-height: 1.35;
+        }
+
+        .pub-title a {
+            color: var(--text);
+        }
+
+        .pub-title a:hover {
+            color: var(--link);
+        }
+
+        .pub-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 6px;
+            align-items: center;
+        }
+
+        .venue-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .pub-highlight {
+            font-size: 0.9rem;
+            color: #c84860;
+            font-weight: 600;
+        }
+
+        .badge-preprint { background: var(--badge-preprint); }
+        .badge-techreport { background: var(--badge-techreport); }
+        .badge-iclr { background: var(--badge-iclr); }
+        .badge-neurips { background: var(--badge-neurips); }
+        .badge-iccv { background: var(--badge-iccv); }
+        .badge-cvpr { background: var(--badge-cvpr); }
+        .badge-icml { background: var(--badge-icml); }
+        .badge-cvmj { background: var(--badge-cvmj); }
+
+        .pub-authors {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .pub-authors .me {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .pub-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.95rem;
+        }
+
+        .pub-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .pub-links img {
+            height: 18px;
+            vertical-align: middle;
+        }
+
+        /* Lists */
+        .simple-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .simple-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .simple-list li:last-child {
+            border-bottom: none;
+        }
+
+        .simple-list strong {
+            color: var(--text);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 48px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .container {
+                padding: 32px 18px;
+            }
+
+            .profile-header {
+                flex-direction: column-reverse;
+                align-items: center;
+                text-align: center;
+            }
+
+            .profile-text h1 {
+                font-size: 2rem;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .pub-card {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .pub-thumb {
+                width: 100%;
+                height: auto;
+                max-height: 180px;
+                aspect-ratio: 16 / 9;
+            }
+
+            .news-list li {
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
+    </style>
+</head>
 <body>
+    <div class="container">
+        <header class="profile-header">
+            <div class="profile-text">
+                <h1>Taihang Hu</h1>
+                <p class="profile-role">MS student in Computer Science and Technology</p>
+                <p class="profile-affiliation">
+                    <a href="https://cc.nankai.edu.cn/" target="_blank">College of Computer Science</a>,
+                    <a href="https://www.nankai.edu.cn/" target="_blank">Nankai University</a>
+                </p>
+                <div class="social-links">
+                    <a href="https://scholar.google.com/citations?user=JtjoOmEAAAAJ&hl=en_US" target="_blank">Google Scholar</a>
+                    <span class="sep">/</span>
+                    <a href="https://github.com/hutaiHang" target="_blank">Github</a>
+                    <span class="sep">/</span>
+                    <a href="mailto:hutaihang00@gmail.com">E-mail</a>
+                </div>
+            </div>
+            <div class="profile-photo">
+                <img src="./files/profile.png" alt="Taihang Hu">
+            </div>
+        </header>
 
-<div id="layout-content" style="margin-top:25px">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                I am currently a third-year MS student at Tianjin Key Laboratory of Visual Computing and Intelligent Perception (VCIP, the lab is led by <a href="https://mmcheng.net/" target="_blank">Ming-Ming Cheng</a>), Nankai University, advised by <a href="https://yaxingwang.netlify.app/author/yaxing-wang/" target="_blank">Prof. Yaxing Wang</a>. My research interests lie:
+            </p>
+            <div class="research-interests">
+                <div class="interest">
+                    <strong>Video Generation & Editing</strong> — Committed to pursuing high-quality video generation and editing that is more controllable and interactive, as well as real-time streaming video generation—particularly long-video generation, and ensuring temporal coherence and physical plausibility.
+                <div class="interest">
+                    <strong>Controllable Image Generation & Editing</strong> — building generative models that better align with human preferences for precise, intuitive visual content creation and manipulation.
+                </div>
+                <div class="interest">
+                    <strong>Unified Understanding & Generation</strong> — developing compact, unified models that bridge visual perception and generation in a single framework.
+                </div>
+            </div>
+        </section>
 
-	<div id="toptitle">					
-					<h1><b>Taihang Hu</b>&nbsp;
-                  </div>
-                  <table>
-                    <tbody>
-                        <tr>
-                            <td width="120" style="vertical-align: top;">
-                                <!-- 图片轮廓为圆形展示 -->
-                                <!-- <style>
-                                    img {
-                                        border-radius: 50%;
-                                        width: 120px;
-                                        height: 120px;
-                                    }
-                                </style> -->
-                                <img src="./files/profile.png" alt="Taihang Hu", height="120px", width="120px", border-radius="50%">
-                            </td>
-                            <!-- 间隔大点 -->
-                            <td width="20"></td>
-                            <td width="650" style="vertical-align: top;">
-                                <p>
-                                    <b>MS student</b><br>
-                                    <a href="https://cc.nankai.edu.cn//" target="_blank">College of Computer Science</a><br>
-                                    <a href="https://www.nankai.edu.cn/" target="_blank">Nankai University</a><br>
-                                </p>
-                                <p>
-                                    [<a href="https://scholar.google.com/citations?user=JtjoOmEAAAAJ&hl=en_US" target="_blank">Google Scholar</a>]
-                                    [<a href="https://github.com/hutaiHang" target="_blank">Github</a>] 
-                                    [<a href="mailto:hutaihang00@gmail.com">E-mail</a>]
-                                </p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                
-<h2>About Me</h2>
-    <p>
-        I am currently a third-year MS student at Tianjin Key Laboratory of Visual Computing and Intelligent Perception (VCIP, the lab is lead by <a href="https://mmcheng.net/" style="text-decoration: underline;">Ming-Ming Cheng</a>), Nankai University, advised by <a href="https://yaxingwang.netlify.app/author/yaxing-wang/" style="text-decoration: underline;">Prof. Yaxing Wang</a>. 
-        My research interests lie in Controllable image generation and editing that better aligns with human preferences, as well as a unified model for understanding and generation.
-        <!-- <br><br> -->
-        <!-- <span style="color:red;">Seeking PhD opportunity for 2026 Fall ^_^ Please contact me if you are interested!</span> -->
-   </p>
-<h2>News</h2>
-<ul class="content">
-	<li>[08/2026] We release <a href="https://arxiv.org/abs/2608.20334v1">Swift-Image</a>, a compact unified model for text-to-image generation and image editing.
-    <li>[08/2026] We release <a href="https://arxiv.org/abs/2608.18076">Capability-Centric Data Design</a>, a data design framework for generalist image generation.
-    <li>[08/2026] We release <a href="https://arxiv.org/abs/2608.14546">CPI-Bench</a>, a comprehensive, practical, and intelligent benchmark for real-world image editing.
-    <li>[05/2026] Two papers about distillation of diffusion models(<a href="https://github.com/byliutao/cdm" target="_blank">CDM</a>) and optimization of training strategies((<a href="https://github.com/ZhengrongYue/PAE" target="_blank">PAE</a>)) have been released. We have achieved state-of-the-art results under the standard evaluation setting. Please stay tuned if you are interested!</li>
-    <li>[05/2026] One paper was accepted by ICML 2026.</li>
-	<li>[04/2026] We release  <a href="https://arxiv.org/abs/2604.19748">Tstars-Tryon 1.0</a> as the commercial SOTA Virtual Try-On model with a benchmark, #1 huggingface monthly paper.
-    <li>[01/2026] One paper (ORION) was accepted by ICLR 2026.</li>
-    <li>[06/2025] Two papers were accepted by ICCV 2025(including <a href="https://arxiv.org/pdf/2504.10434">IsLock</a> and <a href="https://arxiv.org/pdf/2410.12777">MetaUnlearning</a>) </li>
-    <li>[10/2024] I get the NeurIPS 2024 Scholar Award, Looking forward to meeting in Vancouver ^_^ </li>
-    <li>[09/2024] Three papers were accepted by NeurIPS 2024 (including one <span style="color:red;">spotlight</span>).</li>
-    <li>[01/2024] One paper was accepted by ICLR 2024.</li>
-    <li>[08/2023] Started my MS journey at Nankai University.</li>
-    <li>[06/2023] Happy to graduate from Chongqing University. Thank you to all my classmates and teachers!</li>
-    <li>[05/2023] See our new work, <a href="https://arxiv.org/pdf/2406.09836">StyleDiffusion</a> for image editing</li>
-</ul>
+        <section id="news">
+            <h2>News</h2>
+            <ul class="news-list">
+                <li><span class="news-date">08/2026</span><span class="news-content">We release <a href="https://arxiv.org/abs/2608.20334v1" target="_blank">Swift-Image</a>, a compact unified model for text-to-image generation and image editing.</span></li>
+                <li><span class="news-date">08/2026</span><span class="news-content">We release <a href="https://arxiv.org/abs/2608.18076" target="_blank">Capability-Centric Data Design</a>, a data design framework for generalist image generation.</span></li>
+                <li><span class="news-date">08/2026</span><span class="news-content">We release <a href="https://arxiv.org/abs/2608.14546" target="_blank">CPI-Bench</a>, a comprehensive, practical, and intelligent benchmark for real-world image editing.</span></li>
+                <li><span class="news-date">05/2026</span><span class="news-content">Two papers about distillation of diffusion models (<a href="https://github.com/byliutao/cdm" target="_blank">CDM</a>) and optimization of training strategies (<a href="https://github.com/ZhengrongYue/PAE" target="_blank">PAE</a>) have been released. State-of-the-art results under standard evaluation setting.</span></li>
+                <li><span class="news-date">05/2026</span><span class="news-content">One paper was accepted by ICML 2026.</span></li>
+                <li><span class="news-date">04/2026</span><span class="news-content">We release <a href="https://arxiv.org/abs/2604.19748" target="_blank">Tstars-Tryon 1.0</a> as the commercial SOTA Virtual Try-On model with a benchmark, #1 Hugging Face monthly paper.</span></li>
+                <li><span class="news-date">03/2026</span><span class="news-content"> Get ICML Outstanding Reviewer honor.</span></li>
+                <li><span class="news-date">01/2026</span><span class="news-content">One paper (ORION) was accepted by ICLR 2026.</span></li>
+                <li class="news-hidden"><span class="news-date">06/2025</span><span class="news-content">Two papers were accepted by ICCV 2025 (including <a href="https://arxiv.org/pdf/2504.10434" target="_blank">IsLock</a> and <a href="https://arxiv.org/pdf/2410.12777" target="_blank">MetaUnlearning</a>).</span></li>
+                <li class="news-hidden"><span class="news-date">10/2024</span><span class="news-content">I get the NeurIPS 2024 Scholar Award, looking forward to meeting in Vancouver!</span></li>
+                <li class="news-hidden"><span class="news-date">09/2024</span><span class="news-content">Three papers were accepted by NeurIPS 2024 (including one <strong>spotlight</strong>).</span></li>
+                <li class="news-hidden"><span class="news-date">01/2024</span><span class="news-content">One paper was accepted by ICLR 2024.</span></li>
+                <li class="news-hidden"><span class="news-date">08/2023</span><span class="news-content">Started my MS journey at Nankai University.</span></li>
+                <li class="news-hidden"><span class="news-date">06/2023</span><span class="news-content">Happy to graduate from Chongqing University. Thank you to all my classmates and teachers!</span></li>
+                <li class="news-hidden"><span class="news-date">05/2023</span><span class="news-content">See our new work, <a href="https://arxiv.org/pdf/2406.09836" target="_blank">StyleDiffusion</a>, for image editing.</span></li>
+            </ul>
+            <button class="news-toggle" id="news-toggle" onclick="toggleNews()">Show more</button>
+        </section>
 
-<style>
-  .content {
-    height: 140px;
-    background-color: white;
-    overflow-y: scroll;
-  }
+        <section id="publications">
+            <h2>Publications</h2>
+            <p class="pub-note">* indicates equal contribution, # indicates corresponding author.</p>
 
-  /* Existing styles, possibly for desktop, remain unchanged */
+            <div class="pub-grid">
+                <div class="pub-card" data-year="2026">
+                    <div class="pub-thumb">
+                        <img src="./files/swift-image.png" alt="Swift-Image thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-title"><a href="https://arxiv.org/abs/2608.20334v1" target="_blank">Swift-Image: A Compact Unified Model for Text-to-Image Generation and Image Editing</a></div>
+                        <div class="pub-tags">
+                            <span class="venue-tag badge-techreport">Tech Report</span>
+                        </div>
+                        <div class="pub-authors"><span class="me">Taihang Hu*</span>, Zhao Wang*, Zuan Gao*, Tao Liu*, Hao Yan*, Zhengze Xu*, Yuhang Yu*, Yongchao Du*, Xingjian Wang*, Jun Zheng*, Qinye Zhou*, Yaqi Cai, Zhengrui Chen, Chao Lin, Yefeng Shen, Yuan Wang, Zhengtao Wu, Ge Wu, Xiaoli Xu, Denghui Yang, Huayu Zhang, Mingzhou Zhang, Mengting Chen#</div>
+                        <div class="pub-links"><a href="https://arxiv.org/abs/2608.20334v1" target="_blank">Paper</a></div>
+                    </div>
+                </div>
 
-  /* Media query for mobile devices */
-  @media screen and (max-width: 600px) {
-    .content li {
-      font-size: 20px; /* This increases the font size; you can also use specific values like 16px if you prefer */
-    }
-  }
-</style>
+                <div class="pub-card" data-year="2026">
+                    <div class="pub-thumb">
+                        <img src="./files/data.png" alt="Capability-Centric Data Design thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-title"><a href="https://arxiv.org/abs/2608.18076" target="_blank">From Corpora to Co-Evolving Capabilities: Capability-Centric Data Design for Generalist Image Generation</a></div>
+                        <div class="pub-tags">
+                            <span class="venue-tag badge-techreport">Tech Report</span>
+                        </div>
+                        <div class="pub-authors">Xingjian Wang*, Zhao Wang*, <span class="me">Taihang Hu*</span>, Jun Zheng*, Zhengrui Chen*, Qinye Zhou*, Zhengtao Wu*, Yongchao Du, Zuan Gao, Chao Lin, Yefeng Shen, Yuan Wang, Xiaoli Xu, Zhengze Xu, Hao Yan, Denghui Yang, Yuhang Yu, Huayu Zhang, Mingzhou Zhang, Mengting Chen#</div>
+                        <div class="pub-links"><a href="https://arxiv.org/abs/2608.18076" target="_blank">Paper</a></div>
+                    </div>
+                </div>
 
-<h2>Publications</h2>
-<p>(* indicates equal contribution, # indicates Corresponding author)</p>
+                <div class="pub-card" data-year="2026">
+                    <div class="pub-thumb">
+                        <img src="./files/cpibench.png" alt="CPI-Bench thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-title"><a href="https://arxiv.org/abs/2608.14546" target="_blank">CPI-Bench: A Comprehensive, Practical, and Intelligent Benchmark for Real-World Image Editing</a></div>
+                        <div class="pub-tags">
+                            <span class="venue-tag badge-techreport">Tech Report</span>
+                        </div>
+                        <div class="pub-authors">Qinye Zhou, Jun Zheng, Yongchao Du, Yuan Wang, Zhengrui Chen, Zuan Gao, <span class="me">Taihang Hu</span>, Chao Lin, Yefeng Shen, Xingjian Wang, Zhao Wang, Zhengtao Wu, Xiaoli Xu, Zhengze Xu, Hao Yan, Denghui Yang, Yuhang Yu, Huayu Zhang, Mingzhou Zhang, Mengting Chen</div>
+                        <div class="pub-links"><a href="https://arxiv.org/abs/2608.14546" target="_blank">Paper</a> <a href="https://huggingface.co/datasets/TaobaoTmall-AlgorithmProducts/CPI-benchmark" target="_blank">HuggingFace</a> <a href="https://github.com/zqyzzz/CPI-benchmark" target="_blank">Code</a></div>
+                    </div>
+                </div>
 
-<!-- Selected Publications Section -->
-<div id="selected-publications">
-    <ul>
-        <li>
-            What Matters for Diffusion-Friendly Latent Manifold? Prior-Aligned Autoencoders for Latent Diffusion<br>
-            Zhengrong Yue, <b>Taihang Hu</b>, Mengting Chen, Haiyu Zhang, Zihao Pan, Tao Liu, Zikang Wang, Jinsong Lan, Xiaoyong Zhu, Bo Zheng#, Yali Wang#<br>
-            <a href="https://github.com/ZhengrongYue/PAE" target="blank">[Paper]</a>
-        </li>
-        <li>
-            Continuous-Time Distribution Matching for Few-Step Diffusion Distillation<br>
-            Tao Liu, Hao Yan, Mengting Chen, <b>Taihang Hu</b>, Zhengrong Yue, Zihao Pan, Jinsong Lan, Xiaoyong Zhu, Ming-Ming Cheng, Bo Zheng, Yaxing Wang<br>
-            <a href="https://github.com/byliutao/cdm"" target="blank">[Paper]</a>
-        </li>
-        <li>
-            ORION: Decoupling and Alignment for Unified Autoregressive Understanding and Generation<br>
-            <b>Taihang Hu</b>, Mengting Chen, Jinsong Lan, Xiaoyong Zhu, Kaifu Zhang, Ming-Ming Cheng, Bo Zheng, Yaxing Wang (<b>ICLR 2026</b>)<br>
-            <a href="https://openreview.net/forum?id=PP7j0xvvUB" target="blank">[Paper]</a>
-        </li>
-        <li>
-            Anchor Token Matching: Implicit Structure Locking for Training-free AR Image Editing<br>
-            <b>Taihang Hu</b>, Linxuan Li, Kai Wang, Yaxing Wang, Jian Yang, Ming-Ming Cheng(<b>ICCV 2025</b>)<br>
-            <a href="https://arxiv.org/pdf/2504.10434" target="blank">[Paper]</a>
-            <a href="https://github.com/hutaiHang/ATM" target="blank">[Code]</a>
-<!--             <img src='https://img.shields.io/github/stars/hutaiHang/ToMe.svg?style=social&label=Star' alt="sym"> -->
-        </li>
-        <li>
-            Meta-Unlearning on Diffusion Models: Preventing Relearning Unlearned Concepts<br>
-            Hongcheng Gao*, Tianyu Pang*, Chao Du, <b>Taihang Hu</b>, Zhijie Deng, Min Lin(<b>ICCV 2025</b>)<br>
-            <a href="https://arxiv.org/pdf/2410.12777" target="blank">[Paper]</a>
-            <a href="https://github.com/sail-sg/Meta-Unlearning" target="blank">[Code]</a>
-<!--             <img src='https://img.shields.io/github/stars/hutaiHang/ToMe.svg?style=social&label=Star' alt="sym"> -->
-        </li>
-	<li>
-            Token Merging for Training-Free Semantic Binding in Text-to-Image Synthesis<br>
-            <b>Taihang Hu</b>, Linxuan Li, Joost van de Weijer, Hongcheng Gao, Fahad Khan, Jian Yang, Ming-Ming Cheng, Kai Wang, Yaxing Wang(<b>NeurIPS 2024</b>)<br>
-            <a href="https://arxiv.org/abs/2411.07132" target="blank">[Paper]</a>
-            <a href="https://github.com/hutaiHang/tome" target="blank">[Code]</a>
-            <img src='https://img.shields.io/github/stars/hutaiHang/ToMe.svg?style=social&label=Star' alt="sym">
-        </li>
+                <div class="pub-card" data-year="2026">
+                    <div class="pub-thumb">
+                        <img src="./files/tryon.png" alt="Tstars-Tryon thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-title"><a href="https://arxiv.org/abs/2604.19748" target="_blank">Tstars-Tryon 1.0: Commercial SOTA Virtual Try-On with Benchmark</a></div>
+                        <div class="pub-tags">
+                            <span class="venue-tag badge-techreport">Tech Report</span>
+                            <span class="pub-highlight"><a href="https://huggingface.co/papers/2604.19748" target="_blank" style="color: inherit">#1 Paper of the month</a></span>
+                        </div>
+                        <div class="pub-authors">Mengting Chen#, Zhengrui Chen*, Yongchao Du*, Zuan Gao*, <span class="me">Taihang Hu*</span>, Jinsong Lan*, Chao Lin*, Yefeng Shen*, Xingjian Wang*, Zhao Wang*, Zhengtao Wu*, Xiaoli Xu*, Zhengze Xu*, Hao Yan*, Mingzhou Zhang*, Jun Zheng*, Qinye Zhou*, Xiaoyong Zhu*, Bo Zheng#</div>
+                        <div class="pub-links"><a href="https://arxiv.org/abs/2604.19748" target="_blank">Paper</a> <a href="https://huggingface.co/datasets/TaobaoTmall-AlgorithmProducts/Tstars-VTON" target="_blank">Benchmark</a> <a href="https://mp.weixin.qq.com/s/9xsNpPF5bKI3L5V1cRvB_w" target="_blank">Media</a> </div>
+                    </div>
+                </div>
 
-        <li>
-            Faster Diffusion: Rethinking the Role of UNet Encoder in Diffusion Models<br>
-            Senmao Li*, <b>Taihang Hu*</b>, Fahad Shahbaz Khan, Linxuan Li, Shiqi Yang, Yaxing Wang#, Ming-Ming Cheng, Jian Yang(<b>NeurIPS 2024, the order of the Co-first authors was determined by coin flip.</b>)<br>
-            <a href="https://arxiv.org/pdf/2312.09608" target="blank">[Paper]</a>
-            <a href="https://github.com/hutaiHang/Faster-Diffusion" target="blank">[Code]</a>
-            <img src='https://img.shields.io/github/stars/hutaiHang/Faster-Diffusion.svg?style=social&label=Star' alt="sym">
-        </li>
+                <div class="pub-card" data-year="2026">
+                    <div class="pub-thumb">
+                        <img src="./files/pae.png" alt="PAE thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-title"><a href="https://arxiv.org/abs/2605.07915" target="_blank">What Matters for Diffusion-Friendly Latent Manifold? Prior-Aligned Autoencoders for Latent Diffusion</a></div>
+                        <div class="pub-tags">
+                            <span class="venue-tag badge-preprint">Preprint 2026</span>
+                        </div>
+                        <div class="pub-authors">Zhengrong Yue, <span class="me">Taihang Hu</span>, Mengting Chen, Haiyu Zhang, Zihao Pan, Tao Liu, Zikang Wang, Jinsong Lan, Xiaoyong Zhu, Bo Zheng#, Yali Wang#</div>
+                        <div class="pub-links"><a href="https://arxiv.org/abs/2605.07915" target="_blank">Paper</a><a href="https://zhengrongyue.github.io/pae.github.io/" target="_blank">Project</a><a href="https://huggingface.co/yuezhengrong/PAE-collections" target="_blank">HuggingFace</a><a href="https://www.modelscope.cn/models/ZhengrongYue/PAE-Collections" target="_blank">ModelScope</a><a href="https://github.com/ZhengrongYue/PAE" target="_blank">Code</a><img src="https://img.shields.io/github/stars/ZhengrongYue/PAE.svg?style=social&label=Star" alt="stars"></div>
+                    </div>
+                </div>
 
-        <li>
-            Leveraging Catastrophic Forgetting to Develop Safe Diffusion Models against Malicious Finetuning<br>
-            Jiadong Pan*, Hongcheng Gao*, Zongyu Wu, <b>Taihang Hu</b>, Li Su, Liang Li, Qingming Huang(<b>NeurIPS 2024</b> <b><span style="color:red;">Spotlight</span></b> )<br>
-<!--             <a href="https://arxiv.org/pdf/2402.10882" target="blank">[Paper]</a> <a href="https://github.com/Wu-Zongyu/POSI" target="blank">[Code]</a><br> -->
-        </li>
+                <div class="pub-card" data-year="2026">
+                    <div class="pub-thumb">
+                        <img src="./files/cdm.png" alt="CDM thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-title"><a href="https://arxiv.org/abs/2605.06376" target="_blank">Continuous-Time Distribution Matching for Few-Step Diffusion Distillation</a></div>
+                        <div class="pub-tags">
+                            <span class="venue-tag badge-preprint">Preprint 2026</span>
+                        </div>
+                        <div class="pub-authors">Tao Liu, Hao Yan, Mengting Chen, <span class="me">Taihang Hu</span>, Zhengrong Yue, Zihao Pan, Jinsong Lan, Xiaoyong Zhu, Ming-Ming Cheng, Bo Zheng, Yaxing Wang</div>
+                        <div class="pub-links"><a href="https://arxiv.org/abs/2605.06376" target="_blank">Paper</a><a href="https://byliutao.github.io/cdm_page/" target="_blank">Project</a><a href="https://github.com/byliutao/CDM" target="_blank">Code</a><img src="https://img.shields.io/github/stars/byliutao/CDM.svg?style=social&label=Star" alt="stars"></div>
+                    </div>
+                </div>
 
-        <li>
-            Get What You Want, Not What You Don't: Image Content Suppression for Text-to-Image Diffusion Models<br>
-            Senmao Li, Joost van de Weijer, <b>Taihang Hu</b>, Fahad Shahbaz Khan, Qibin Hou, Yaxing Wang#, Jian Yang(<b>ICLR 2024</b>)<br>
-            <a href="https://arxiv.org/pdf/2402.05375" target="blank">[Paper]</a>
-            <a href="https://github.com/sen-mao/SuppressEOT" target="blank">[Code]</a>
-            <img src='https://img.shields.io/github/stars/sen-mao/SuppressEOT.svg?style=social&label=Star' alt="sym">
-        </li>
+                <div class="pub-card" data-year="2026">
+                    <div class="pub-thumb">
+                        <img src="./files/orion.png" alt="ORION thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-title"><a href="https://openreview.net/forum?id=PP7j0xvvUB" target="_blank">ORION: Decoupling and Alignment for Unified Autoregressive Understanding and Generation</a></div>
+                        <div class="pub-tags">
+                            <span class="venue-tag badge-iclr">ICLR 2026</span>
+                        </div>
+                        <div class="pub-authors"><span class="me">Taihang Hu</span>, Mengting Chen, Jinsong Lan, Xiaoyong Zhu, Kaifu Zhang, Ming-Ming Cheng, Bo Zheng, Yaxing Wang</div>
+                        <div class="pub-links"><a href="https://openreview.net/forum?id=PP7j0xvvUB" target="_blank">Paper</a></div>
+                    </div>
+                </div>
 
-        <li>
-            StyleDiffusion: Prompt-Embedding Inversion for Text-Based Editing<br>
-            Senmao Li, Joost van de Weijer, <b>Taihang Hu</b>, Fahad Shahbaz Khan, Qibin Hou, Yaxing Wang#, Jian (<b>CVMJ 2024</b>)<br>      
-            <a href="https://arxiv.org/pdf/2406.09836" target="blank">[Paper]</a>
-            <a href="https://github.com/sen-mao/StyleDiffusion" target="blank">[Code]</a>
-            <img src='https://img.shields.io/github/stars/sen-mao/StyleDiffusion.svg?style=social&label=Star' alt="sym">
-        </li>
-    </ul>
-</div>
+                <div class="pub-card" data-year="2025">
+                    <div class="pub-thumb">
+                        <img src="./files/atm.png" alt="ATM thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-title"><a href="https://arxiv.org/pdf/2504.10434" target="_blank">Anchor Token Matching: Implicit Structure Locking for Training-free AR Image Editing</a></div>
+                        <div class="pub-tags">
+                            <span class="venue-tag badge-iccv">ICCV 2025</span>
+                        </div>
+                        <div class="pub-authors"><span class="me">Taihang Hu</span>, Linxuan Li, Kai Wang, Yaxing Wang, Jian Yang, Ming-Ming Cheng</div>
+                        <div class="pub-links"><a href="https://arxiv.org/pdf/2504.10434" target="_blank">Paper</a><a href="https://github.com/hutaiHang/ATM" target="_blank">Code</a></div>
+                    </div>
+                </div>
 
+                <div class="pub-card" data-year="2025">
+                    <div class="pub-thumb">
+                        <img src="./files/meta_unlearn.png" alt="MetaUnlearning thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-title"><a href="https://arxiv.org/pdf/2410.12777" target="_blank">Meta-Unlearning on Diffusion Models: Preventing Relearning Unlearned Concepts</a></div>
+                        <div class="pub-tags">
+                            <span class="venue-tag badge-iccv">ICCV 2025</span>
+                        </div>
+                        <div class="pub-authors">Hongcheng Gao*, Tianyu Pang*, Chao Du, <span class="me">Taihang Hu</span>, Zhijie Deng, Min Lin</div>
+                        <div class="pub-links"><a href="https://arxiv.org/pdf/2410.12777" target="_blank">Paper</a><a href="https://github.com/sail-sg/Meta-Unlearning" target="_blank">Code</a></div>
+                    </div>
+                </div>
 
+                <div class="pub-card" data-year="2024">
+                    <div class="pub-thumb">
+                        <img src="./files/tome.png" alt="ToMe thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-title"><a href="https://arxiv.org/abs/2411.07132" target="_blank">Token Merging for Training-Free Semantic Binding in Text-to-Image Synthesis</a></div>
+                        <div class="pub-tags">
+                            <span class="venue-tag badge-neurips">NeurIPS 2024</span>
+                        </div>
+                        <div class="pub-authors"><span class="me">Taihang Hu</span>, Linxuan Li, Joost van de Weijer, Hongcheng Gao, Fahad Khan, Jian Yang, Ming-Ming Cheng, Kai Wang, Yaxing Wang</div>
+                        <div class="pub-links"><a href="https://arxiv.org/abs/2411.07132" target="_blank">Paper</a><a href="https://github.com/hutaiHang/tome" target="_blank">Code</a><img src="https://img.shields.io/github/stars/hutaiHang/ToMe.svg?style=social&label=Star" alt="stars"></div>
+                    </div>
+                </div>
 
-<script>
-function showSelected() {
-    document.getElementById("selected-publications").style.display = "block";
-    document.getElementById("full-publications").style.display = "none";
-    
-    // Change the color to indicate selected tab
-    document.getElementById("selected-tab").style.color = "#527bbd";
-    document.getElementById("full-tab").style.color = "rgb(106, 162, 212)";
-}
+                <div class="pub-card" data-year="2024">
+                    <div class="pub-thumb">
+                        <img src="./files/faster_sd.png" alt="Faster Diffusion thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-title"><a href="https://arxiv.org/pdf/2312.09608" target="_blank">Faster Diffusion: Rethinking the Role of UNet Encoder in Diffusion Models</a></div>
+                        <div class="pub-tags">
+                            <span class="venue-tag badge-neurips">NeurIPS 2024</span>
+                            <span class="pub-highlight">#1 Paper of the day</span>
+                        </div>
+                        <div class="pub-authors"><span class="me">Taihang Hu*</span>, Senmao Li*, Fahad Shahbaz Khan, Linxuan Li, Shiqi Yang, Yaxing Wang#, Ming-Ming Cheng, Jian Yang</div>
+                        <div class="pub-links"><a href="https://arxiv.org/pdf/2312.09608" target="_blank">Paper</a><a href="https://github.com/hutaiHang/Faster-Diffusion" target="_blank">Code</a><img src="https://img.shields.io/github/stars/hutaiHang/Faster-Diffusion.svg?style=social&label=Star" alt="stars"></div>
+                    </div>
+                </div>
 
-function showFull() {
-    document.getElementById("selected-publications").style.display = "none";
-    document.getElementById("full-publications").style.display = "block";
-    
-    // Change the color to indicate selected tab
-    document.getElementById("selected-tab").style.color = "rgb(106, 162, 212)";
-    document.getElementById("full-tab").style.color = "#527bbd";
-}
-</script>
-	
-<h2>Education</h2>
-<ul>
- <li>
-        <p><strong>M.S. </strong> in Computer Science and Technology (Sep. 2023 - Present)</br>
-            Nankai University, Chongqing, China</br>
-             </p>
-    </li>
-    <li>
-        <p><strong>B.E. </strong> in Computer Science and Technology (Sep. 2019 - Jun. 2023)</br>
-            Chongqing University, Chongqing, China</br>
-             </p>
-    </li>
-</ul>
+                <div class="pub-card" data-year="2024">
+                    <div class="pub-thumb">
+                        <img src="./files/posi.png" alt="POSI thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-title"><a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/d0949cbcec31c09431610553a284f94a-Paper-Conference.pdf" target="_blank">Leveraging Catastrophic Forgetting to Develop Safe Diffusion Models against Malicious Finetuning</a></div>
+                        <div class="pub-tags">
+                            <span class="venue-tag badge-neurips">NeurIPS 2024</span>
+                            <span class="pub-highlight">Spotlight</span>
+                        </div>
+                        <div class="pub-authors">Jiadong Pan*, Hongcheng Gao*, Chao Du, <span class="me">Taihang Hu</span>, Zhijie Deng, Min Lin</div>
+                        <div class="pub-links"><a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/d0949cbcec31c09431610553a284f94a-Paper-Conference.pdf" target="_blank">Paper</a><a href="https://github.com/Wu-Zongyu/POSI" target="_blank">Code</a></div>
+                    </div>
+                </div>
 
-<h2>Honors & Award</h2>
-<ul>
-    <li><p>Outstanding UG graduate, Outstanding student in Chongqing University, 2023</p></li>
-    <li><p>Advanced Individual in Enhancing Innovation Capabilities in Chongqing University, 2022</p></li>
-    <li><p>China Undergraduate Mathematical Contest in Modeling, National First Prize, 2021</p></li>
-<!--     <li><p>Outstanding student in CQU, 2022</p></li> -->
-</ul>
+                <div class="pub-card" data-year="2024">
+                    <div class="pub-thumb">
+                        <img src="./files/seot.png" alt="SuppressEOT thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-title"><a href="https://arxiv.org/pdf/2402.05375" target="_blank">Get What You Want, Not What You Don't: Image Content Suppression for Text-to-Image Diffusion Models</a></div>
+                        <div class="pub-tags">
+                            <span class="venue-tag badge-iclr">ICLR 2024</span>
+                        </div>
+                        <div class="pub-authors">Senmao Li, Joost van de Weijer, <span class="me">Taihang Hu</span>, Fahad Shahbaz Khan, Qibin Hou, Yaxing Wang#, Jian Yang</div>
+                        <div class="pub-links"><a href="https://arxiv.org/pdf/2402.05375" target="_blank">Paper</a><a href="https://github.com/sen-mao/SuppressEOT" target="_blank">Code</a><img src="https://img.shields.io/github/stars/sen-mao/SuppressEOT.svg?style=social&label=Star" alt="stars"></div>
+                    </div>
+                </div>
 
+                <div class="pub-card" data-year="2024">
+                    <div class="pub-thumb">
+                        <img src="./files/styleD.png" alt="StyleDiffusion thumbnail">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-title"><a href="https://arxiv.org/pdf/2406.09836" target="_blank">StyleDiffusion: Prompt-Embedding Inversion for Text-Based Editing</a></div>
+                        <div class="pub-tags">
+                            <span class="venue-tag badge-cvmj">CVMJ 2024</span>
+                            <span class="pub-highlight">Spotlight</span>
+                        </div>
+                        <div class="pub-authors">Senmao Li, Joost van de Weijer, <span class="me">Taihang Hu</span>, Fahad Shahbaz Khan, Qibin Hou, Yaxing Wang#, Jian Yang</div>
+                        <div class="pub-links"><a href="https://arxiv.org/pdf/2406.09836" target="_blank">Paper</a><a href="https://github.com/sen-mao/StyleDiffusion" target="_blank">Code</a><img src="https://img.shields.io/github/stars/sen-mao/StyleDiffusion.svg?style=social&label=Star" alt="stars"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<h2>Academic Service</h2>
-As a reviewer for ICLR, NeurIPS, ICML, AISTATS, ICCV, etc.
+        <section id="education">
+            <h2>Education</h2>
+            <ul class="simple-list">
+                <li><strong>M.S.</strong> in Computer Science and Technology, Sep. 2023 – Present<br>Nankai University, Tianjin, China</li>
+                <li><strong>B.E.</strong> in Computer Science and Technology, Sep. 2019 – Jun. 2023<br>Chongqing University, Chongqing, China</li>
+            </ul>
+        </section>
+
+        <section id="honors">
+            <h2>Honors & Awards</h2>
+            <ul class="simple-list">
+                <li>NeurIPS 2024 Scholar Award</li>
+                <li>Outstanding Undergraduate Graduate, Outstanding Student, Chongqing University, 2023</li>
+                <li>Advanced Individual in Enhancing Innovation Capabilities, Chongqing University, 2022</li>
+                <li>China Undergraduate Mathematical Contest in Modeling, National First Prize, 2021</li>
+            </ul>
+        </section>
+
+        <section id="service">
+            <h2>Academic Service</h2>
+            <p>Reviewer for ICLR, NeurIPS, ICML, AISTATS, ICCV, etc.</p>
+        </section>
+
+        <footer>
+            <p>© 2026 Taihang Hu. Last updated September 2026.</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleNews() {
+            const list = document.querySelector('.news-list');
+            const btn = document.getElementById('news-toggle');
+            const expanded = list.classList.toggle('expanded');
+            btn.textContent = expanded ? 'Show less' : 'Show more';
+        }
+    </script>
+</body>
+</html>
