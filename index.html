@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Taihang Hu - MS student at Nankai University">
+    <meta name="description" content="Taihang Hu - Researcher at Alibaba Group (T-Star Lab Talent Program)">
     <title>Taihang Hu</title>
     <link rel="shortcut icon" href="./files/profile.png">
     <style>
@@ -54,7 +54,6 @@
 
         a:hover {
             color: var(--link-hover);
-            text-decoration: underline;
         }
 
         .container {
@@ -97,10 +96,6 @@
         }
 
         .profile-affiliation a {
-            color: var(--text-muted);
-        }
-
-        .profile-affiliation a:hover {
             color: var(--link);
         }
 
@@ -361,6 +356,36 @@
             vertical-align: middle;
         }
 
+        /* Experience */
+        .exp-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .exp-item:last-child {
+            border-bottom: none;
+        }
+
+        .exp-logo {
+            flex-shrink: 0;
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            object-fit: contain;
+            background: #fff;
+            border: 1px solid var(--border);
+        }
+
+        .exp-item strong {
+            color: var(--text);
+        }
+
+
+
         /* Lists */
         .simple-list {
             list-style: none;
@@ -436,11 +461,7 @@
         <header class="profile-header">
             <div class="profile-text">
                 <h1>Taihang Hu</h1>
-                <p class="profile-role">MS student in Computer Science and Technology</p>
-                <p class="profile-affiliation">
-                    <a href="https://cc.nankai.edu.cn/" target="_blank">College of Computer Science</a>,
-                    <a href="https://www.nankai.edu.cn/" target="_blank">Nankai University</a>
-                </p>
+                <p class="profile-role">Researcher at Alibaba Group</p>
                 <div class="social-links">
                     <a href="https://scholar.google.com/citations?user=JtjoOmEAAAAJ&hl=en_US" target="_blank">Google Scholar</a>
                     <span class="sep">/</span>
@@ -457,8 +478,12 @@
         <section id="about">
             <h2>About Me</h2>
             <p>
-                I am currently a third-year MS student at Tianjin Key Laboratory of Visual Computing and Intelligent Perception (VCIP, the lab is led by <a href="https://mmcheng.net/" target="_blank">Ming-Ming Cheng</a>), Nankai University, advised by <a href="https://yaxingwang.netlify.app/author/yaxing-wang/" target="_blank">Prof. Yaxing Wang</a>. My research interests lie:
+                I am currently a Researcher at <a href="https://www.alibaba.com/" target="_blank">Alibaba Group</a> through the <a href="https://talent.taotian.com/star/home" target="_blank">T-Star Lab Talent Program</a>. I received my M.S. degree from the College of Computer Science, <a href="https://www.nankai.edu.cn/" target="_blank">Nankai University</a> in June 2026, where I was a member of Tianjin Key Laboratory of Visual Computing and Intelligent Perception (VCIP, the lab is led by <a href="https://mmcheng.net/" target="_blank">Ming-Ming Cheng</a>) and advised by <a href="https://yaxingwang.netlify.app/author/yaxing-wang/" target="_blank">Prof. Yaxing Wang</a>.
             </p>
+            <p>
+                My research interests lie:
+            </p>
+
             <div class="research-interests">
                 <div class="interest">
                     <strong>Video Generation & Editing</strong> — Committed to pursuing high-quality video generation and editing that is more controllable and interactive, as well as real-time streaming video generation—particularly long-video generation, and ensuring temporal coherence and physical plausibility.
@@ -469,11 +494,16 @@
                     <strong>Unified Understanding & Generation</strong> — developing compact, unified models that bridge visual perception and generation in a single framework.
                 </div>
             </div>
+            <p>
+                Our team is hiring research interns with a strong interest in AIGC. Feel free to drop me an <a href="mailto:hutaihang00@gmail.com">email</a> if you are interested.
+            </p>
         </section>
 
         <section id="news">
             <h2>News</h2>
             <ul class="news-list">
+                <li><span class="news-date">09/2026</span><span class="news-content">Three papers were accepted to NeurIPS 2026 (<a href="https://arxiv.org/abs/2605.07915" target="_blank">PAE</a>, <a href="https://arxiv.org/abs/2605.06376" target="_blank">CDM</a>, and <a href="https://nips.cc/virtual/2026/poster/151083" target="_blank">ResNorm</a>). Media coverage: <a href="https://mp.weixin.qq.com/s/IutrnwyXVxwQppppxFpRvQ" target="_blank">[1]</a>, <a href="https://mp.weixin.qq.com/s/uOT3LTVjtK7FEzpfqljhwA" target="_blank">[2]</a>.</span></li>
+                <li><span class="news-date">06/2026</span><span class="news-content">Happy to receive my M.S. degree from Nankai University. Thank you to all my advisors, mentors and classmates!</span></li>
                 <li><span class="news-date">08/2026</span><span class="news-content">We release <a href="https://arxiv.org/abs/2608.20334v1" target="_blank">Swift-Image</a>, a compact unified model for text-to-image generation and image editing.</span></li>
                 <li><span class="news-date">08/2026</span><span class="news-content">We release <a href="https://arxiv.org/abs/2608.18076" target="_blank">Capability-Centric Data Design</a>, a data design framework for generalist image generation.</span></li>
                 <li><span class="news-date">08/2026</span><span class="news-content">We release <a href="https://arxiv.org/abs/2608.14546" target="_blank">CPI-Bench</a>, a comprehensive, practical, and intelligent benchmark for real-world image editing.</span></li>
@@ -562,10 +592,10 @@
                     <div class="pub-content">
                         <div class="pub-title"><a href="https://arxiv.org/abs/2605.07915" target="_blank">What Matters for Diffusion-Friendly Latent Manifold? Prior-Aligned Autoencoders for Latent Diffusion</a></div>
                         <div class="pub-tags">
-                            <span class="venue-tag badge-preprint">Preprint 2026</span>
+                            <span class="venue-tag badge-neurips">NeurIPS 2026</span>
                         </div>
                         <div class="pub-authors">Zhengrong Yue, <span class="me">Taihang Hu</span>, Mengting Chen, Haiyu Zhang, Zihao Pan, Tao Liu, Zikang Wang, Jinsong Lan, Xiaoyong Zhu, Bo Zheng#, Yali Wang#</div>
-                        <div class="pub-links"><a href="https://arxiv.org/abs/2605.07915" target="_blank">Paper</a><a href="https://zhengrongyue.github.io/pae.github.io/" target="_blank">Project</a><a href="https://huggingface.co/yuezhengrong/PAE-collections" target="_blank">HuggingFace</a><a href="https://www.modelscope.cn/models/ZhengrongYue/PAE-Collections" target="_blank">ModelScope</a><a href="https://github.com/ZhengrongYue/PAE" target="_blank">Code</a><img src="https://img.shields.io/github/stars/ZhengrongYue/PAE.svg?style=social&label=Star" alt="stars"></div>
+                        <div class="pub-links"><a href="https://arxiv.org/abs/2605.07915" target="_blank">Paper</a><a href="https://mp.weixin.qq.com/s/IutrnwyXVxwQppppxFpRvQ" target="_blank">Media</a><a href="https://zhengrongyue.github.io/pae.github.io/" target="_blank">Project</a><a href="https://huggingface.co/yuezhengrong/PAE-collections" target="_blank">HuggingFace</a><a href="https://www.modelscope.cn/models/ZhengrongYue/PAE-Collections" target="_blank">ModelScope</a><a href="https://github.com/ZhengrongYue/PAE" target="_blank">Code</a><img src="https://img.shields.io/github/stars/ZhengrongYue/PAE.svg?style=social&label=Star" alt="stars"></div>
                     </div>
                 </div>
 
@@ -576,10 +606,24 @@
                     <div class="pub-content">
                         <div class="pub-title"><a href="https://arxiv.org/abs/2605.06376" target="_blank">Continuous-Time Distribution Matching for Few-Step Diffusion Distillation</a></div>
                         <div class="pub-tags">
-                            <span class="venue-tag badge-preprint">Preprint 2026</span>
+                            <span class="venue-tag badge-neurips">NeurIPS 2026</span>
                         </div>
                         <div class="pub-authors">Tao Liu, Hao Yan, Mengting Chen, <span class="me">Taihang Hu</span>, Zhengrong Yue, Zihao Pan, Jinsong Lan, Xiaoyong Zhu, Ming-Ming Cheng, Bo Zheng, Yaxing Wang</div>
-                        <div class="pub-links"><a href="https://arxiv.org/abs/2605.06376" target="_blank">Paper</a><a href="https://byliutao.github.io/cdm_page/" target="_blank">Project</a><a href="https://github.com/byliutao/CDM" target="_blank">Code</a><img src="https://img.shields.io/github/stars/byliutao/CDM.svg?style=social&label=Star" alt="stars"></div>
+                        <div class="pub-links"><a href="https://arxiv.org/abs/2605.06376" target="_blank">Paper</a><a href="https://mp.weixin.qq.com/s/uOT3LTVjtK7FEzpfqljhwA" target="_blank">Media</a><a href="https://byliutao.github.io/cdm_page/" target="_blank">Project</a><a href="https://github.com/byliutao/CDM" target="_blank">Code</a><img src="https://img.shields.io/github/stars/byliutao/CDM.svg?style=social&label=Star" alt="stars"></div>
+                    </div>
+                </div>
+
+                <div class="pub-card" data-year="2026">
+                    <div class="pub-thumb">
+                        <img src="./files/resnorm.png" alt="ResNorm thumbnail" onerror="this.style.display='none'">
+                    </div>
+                    <div class="pub-content">
+                        <div class="pub-title"><a href="https://nips.cc/virtual/2026/poster/151083" target="_blank">Diffusion Transformers with Residual Adaptive Layer Normalization</a></div>
+                        <div class="pub-tags">
+                            <span class="venue-tag badge-neurips">NeurIPS 2026</span>
+                        </div>
+                        <div class="pub-authors">Ge Wu, Minxing Luo, Yikai Ge, Lei Wang, DanDan Zheng, Rui Liu, Libin Wang, Yujie Bao, <span class="me">Taihang Hu</span>, Jingdong Chen, Xiang Li</div>
+                        <div class="pub-links"><a href="https://nips.cc/virtual/2026/poster/151083" target="_blank">Paper</a></div>
                     </div>
                 </div>
 
@@ -700,12 +744,28 @@
             </div>
         </section>
 
-        <section id="education">
-            <h2>Education</h2>
-            <ul class="simple-list">
-                <li><strong>M.S.</strong> in Computer Science and Technology, Sep. 2023 – Present<br>Nankai University, Tianjin, China</li>
-                <li><strong>B.E.</strong> in Computer Science and Technology, Sep. 2019 – Jun. 2023<br>Chongqing University, Chongqing, China</li>
-            </ul>
+        <section id="experience">
+            <h2>Experience &amp; Education</h2>
+            <div class="exp-item">
+                <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=alibaba.com&sz=64" alt="Alibaba Group logo">
+                <div><strong>Researcher</strong>, Alibaba Group — Hangzhou, China</div>
+            </div>
+            <div class="exp-item">
+                <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=taobao.com&sz=64" alt="Taobao & Tmall Group logo">
+                <div><strong>Research Intern</strong>, Taobao &amp; Tmall Group, Alibaba Group — Mar. 2025 – Jun. 2026<br>Mentored by <a href="https://mengtingchen.github.io/" target="_blank">Mengting Chen</a></div>
+            </div>
+            <div class="exp-item">
+                <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=shlab.org.cn&sz=64" alt="Shanghai AI Laboratory logo">
+                <div><strong>Research Intern</strong>, <a href="https://github.com/OpenGVLab" target="_blank">OpenGVLab</a>, <a href="https://www.shlab.org.cn/" target="_blank">Shanghai AI Laboratory</a> — Dec. 2024 – Mar. 2025<br>Mentored by <a href="https://scholar.google.com/citations?user=_go6DPsAAAAJ&hl=zh-CN" target="_blank">Prof. Peng Gao</a> and <a href="https://paper99.github.io/" target="_blank">Zhen Li</a></div>
+            </div>
+            <div class="exp-item">
+                <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=nankai.edu.cn&sz=64" alt="Nankai University logo">
+                <div><strong>M.S.</strong> in Computer Science and Technology, <a href="https://www.nankai.edu.cn/" target="_blank">Nankai University</a> — Sep. 2023 – Jun. 2026</div>
+            </div>
+            <div class="exp-item">
+                <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=cqu.edu.cn&sz=64" alt="Chongqing University logo">
+                <div><strong>B.E.</strong> in Computer Science and Technology, <a href="https://www.cqu.edu.cn/" target="_blank">Chongqing University</a> — Sep. 2019 – Jun. 2023</div>
+            </div>
         </section>
 
         <section id="honors">
@@ -724,7 +784,7 @@
         </section>
 
         <footer>
-            <p>© 2026 Taihang Hu. Last updated September 2026.</p>
+            <p>© 2026 Taihang Hu. Last updated November 2026.</p>
         </footer>
     </div>
 
